@@ -1,0 +1,23 @@
+{
+  "name": "formatting",
+  "version": "0.0.1",
+  "description": "format value letter",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --compilers js:babel-core/register"
+  },
+  "keywords": [
+    "format",
+    "value",
+    "javascript"
+  ],
+  "author": "ge6285790",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-core": "^6.24.0",
+    "babel-preset-es2015": "^6.24.0",
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  }
+}
