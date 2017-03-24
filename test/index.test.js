@@ -47,13 +47,20 @@ describe('Constructor Formatting', () => {
       it('insert function test => insert text', () => {
         expect(valueFormat.insert('1234567', ':', 2)).to.eql('12:34567');
         expect(valueFormat.insert('1234567', 'aaa', 3)).to.eql('123aaa4567');
+        expect(valueFormat.insert('123', 'aaa', 4)).to.eql('123aaa');
       });
 
       it('replace function test => replace text', () => {
-        expect(valueFormat.replace('123456', '2', 'word')).to.eql('1word34567');
+        expect(valueFormat.replace('123456', '2', 'word')).to.eql('1word3456');
         expect(valueFormat.replace('123456', '9', 'word')).to.eql('123456');
       });
 
-      valueFormat.replaceWithRange('123456', 'word', 2, 5);
+      it('replaceWithRange function test => replace text with range', () => {
+        expect(valueFormat.replaceWithRange('123456', 'word', 2, 5)).to.eql('12word6');
+        expect(valueFormat.replaceWithRange('1234567', 'word', 1, 6)).to.eql('1word7');
+        expect(valueFormat.replaceWithRange('123456', 'word', 2, 9)).to.eql('12word');
+        expect(valueFormat.replaceWithRange('123456', 'word', 0, 9)).to.eql('word');
+      });
+
     });
 });

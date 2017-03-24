@@ -1,5 +1,4 @@
 export default function value(that) {
-
   that.leading = (value, length, letter) => {
     const valueLength = value.toString().length;
     const dif = length - valueLength;
@@ -50,13 +49,11 @@ export default function value(that) {
     if (value.indexOf(letter) < 0) {
       return value;
     }
-    console.log('-----', value.replace(reg, replaceLetter));
     return value.replace(reg, replaceLetter);
   }
 
   that.replaceWithRange = (value, replaceLetter, start, end) => {
     const text = value.toString();
-    console.log(`${text.slice(0, start)}${replaceLetter}${text.slice(end, text.length)}`);
     return `${text.slice(0, start)}${replaceLetter}${text.slice(end, text.length)}`;
   }
 

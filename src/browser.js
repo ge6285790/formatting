@@ -25,6 +25,4 @@ function Formatting(type) {
   }
 }
 
-// window.Formatting = Formatting;
-
-export default Formatting;
+window.Formatting = Formatting;
