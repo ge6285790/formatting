@@ -1,12 +1,16 @@
 import value from './value/value';
 import file from './file/file';
+import url from './url/url';
 
 function Formatting(type) {
 
-  // type = file, value, text, number
+  // type = file, value, text, number, url
   switch (type) {
     case 'file': {
       file(this);
+    }
+    case 'url': {
+      url(this);
     }
     case 'value': {
       value(this);

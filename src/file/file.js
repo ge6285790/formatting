@@ -1,7 +1,5 @@
 export default function value(that) {
 
-  const unitArray = ['KB', 'MB', 'GB', 'TB'];
-
   that.file = (ele) => {
     return document.querySelector(ele).files;
   }
@@ -21,10 +19,11 @@ export default function value(that) {
   };
 
   that.size = (size) => {
+    const unitArray = ['KB', 'MB', 'GB', 'TB'];
     const mathLog = Math.floor(Math.log10(size));
-    const unit = unitArray[Math.floor(mathLog / 3) - 1];
+    const unit = unitArray[Math.floor(mathLog / 3)];
     const divisor = Math.pow(10, Math.floor(mathLog / 3) * 3);
-    return `${Math.ceil((size / divisor) * 100) / 100} ${unit}`;
+    return `${Math.round((size / divisor) * 100) / 100} ${unit}`;
   }
 
   that.duration = (duration) => {

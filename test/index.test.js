@@ -63,4 +63,51 @@ describe('Constructor Formatting', () => {
       });
 
     });
+
+    describe('#File Format', () => {
+      const fileFormat = new Formatting('file');
+
+      it('size function test => count file size', () => {
+        expect(fileFormat.size(100)).to.eql('100 KB');
+        expect(fileFormat.size(1001)).to.eql('1 MB');
+        expect(fileFormat.size(100010)).to.eql('100.01 MB');
+        expect(fileFormat.size(100050)).to.eql('100.05 MB');
+        expect(fileFormat.size(1001000)).to.eql('1 GB');
+      });
+
+      it('duration function test => count duration time', () => {
+        expect(fileFormat.duration(10)).to.eql('00:00:10');
+        expect(fileFormat.duration(100)).to.eql('00:01:40');
+        expect(fileFormat.duration(3540)).to.eql('00:59:00');
+        expect(fileFormat.duration(3600)).to.eql('01:00:00');
+        expect(fileFormat.duration(3705)).to.eql('01:01:45');
+        expect(fileFormat.duration(36000)).to.eql('10:00:00');
+      });
+    });
+
+    describe('#Url Format', () => {
+      const urlFormat = new Formatting('url');
+
+      it('getHash function test => get url hash', () => {
+        expect(urlFormat.getHash('https://google.com/#kkk#da#123')).to.eql({
+          hash: 'kkk#da#123',
+          hashArray: ['kkk', 'da', '123']
+        });
+        expect(urlFormat.getParamByName('https://google.com?a=kyle&b=&scott', 'a')).to.eql('kyle');
+        // expect(fileFormat.size(1001)).to.eql('1 MB');
+        // expect(fileFormat.size(100010)).to.eql('100.01 MB');
+        // expect(fileFormat.size(100050)).to.eql('100.05 MB');
+        // expect(fileFormat.size(1001000)).to.eql('1 GB');
+      });
+
+      // it('duration function test => count duration time', () => {
+      //   expect(fileFormat.duration(10)).to.eql('00:00:10');
+      //   expect(fileFormat.duration(100)).to.eql('00:01:40');
+      //   expect(fileFormat.duration(3540)).to.eql('00:59:00');
+      //   expect(fileFormat.duration(3600)).to.eql('01:00:00');
+      //   expect(fileFormat.duration(3705)).to.eql('01:01:45');
+      //   expect(fileFormat.duration(36000)).to.eql('10:00:00');
+      // });
+    });
+
 });
