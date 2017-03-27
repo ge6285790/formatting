@@ -89,25 +89,49 @@ describe('Constructor Formatting', () => {
       const urlFormat = new Formatting('url');
 
       it('getHash function test => get url hash', () => {
+        // url is not essential
         expect(urlFormat.getHash('https://google.com/#kkk#da#123')).to.eql({
           hash: 'kkk#da#123',
           hashArray: ['kkk', 'da', '123']
         });
-        expect(urlFormat.getParamByName('https://google.com?a=kyle&b=&scott', 'a')).to.eql('kyle');
-        // expect(fileFormat.size(1001)).to.eql('1 MB');
-        // expect(fileFormat.size(100010)).to.eql('100.01 MB');
-        // expect(fileFormat.size(100050)).to.eql('100.05 MB');
-        // expect(fileFormat.size(1001000)).to.eql('1 GB');
       });
 
-      // it('duration function test => count duration time', () => {
-      //   expect(fileFormat.duration(10)).to.eql('00:00:10');
-      //   expect(fileFormat.duration(100)).to.eql('00:01:40');
-      //   expect(fileFormat.duration(3540)).to.eql('00:59:00');
-      //   expect(fileFormat.duration(3600)).to.eql('01:00:00');
-      //   expect(fileFormat.duration(3705)).to.eql('01:01:45');
-      //   expect(fileFormat.duration(36000)).to.eql('10:00:00');
-      // });
+      it('getParamByName function test => get param by name', () => {
+        // url is not essential
+        expect(urlFormat.getParamByName('https://google.com?a=kyle&b=&scott', 'a')).to.eql('kyle');
+        expect(urlFormat.getParamByName('https://google.com?a=kyle&b=&scott', 'b')).to.eql('');
+        expect(urlFormat.getParamByName('https://google.com?a=kyle&b=&scott', 'scott')).to.eql('');
+      });
+
+      it('getParams function test => get params from url', () => {
+        // url is not essential
+        expect(urlFormat.getParams('https://google.com?a=kyle&b=&scott')).to.eql({
+          a: 'kyle',
+          b: '',
+          scott: '',
+        });
+      });
+
+      it('getParams function test => get params from url', () => {
+        // url is not essential
+        expect(urlFormat.getParams('https://google.com?a=kyle&b=&scott')).to.eql({
+          a: 'kyle',
+          b: '',
+          scott: '',
+        });
+      });
+    });
+
+    describe('#Object Format', () => {
+      const objectFormat = new Formatting('url');
+
+      it('deepMerge function test => deep merge two object', () => {
+        // url is not essential
+        expect(objectFormat.deepMerge({a: 1, c: 3}, {b: 2, c: 2})).to.eql({
+          a: 1,
+          b: 2
+        });
+      });
     });
 
 });

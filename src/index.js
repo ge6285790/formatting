@@ -1,6 +1,7 @@
 import value from './value/value';
 import file from './file/file';
 import url from './url/url';
+import object from './object/object';
 
 function Formatting(type) {
 
@@ -11,6 +12,9 @@ function Formatting(type) {
     }
     case 'url': {
       url(this);
+    }
+    case 'object': {
+      object(this);
     }
     case 'value': {
       value(this);

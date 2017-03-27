@@ -26,4 +26,22 @@ export default function url(that) {
     }
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
   }
+
+  that.getParams = (url) => {
+    let string = url ? url : location.href;
+    string = string.split('?')[string.split('?').length - 1];
+    let params = string.split('&');
+    params = params.map((item) => {
+      const keyValuePair = item.split('=');
+      return {
+        [keyValuePair[0]]: keyValuePair[1] || '',
+      };
+    });
+    return params.reduce((prev, next) => {
+      return {
+        ...prev,
+        ...next
+      }
+    });
+  }
 }

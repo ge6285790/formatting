@@ -1,5 +1,7 @@
 import value from './value/value';
 import file from './file/file';
+import url from './url/url';
+import object from './object/object';
 
 function Formatting(type) {
 
@@ -7,6 +9,12 @@ function Formatting(type) {
   switch (type) {
     case 'file': {
       file(this);
+    }
+    case 'url': {
+      url(this);
+    }
+    case 'object': {
+      object(this);
     }
     case 'value': {
       value(this);
