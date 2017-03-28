@@ -27,8 +27,6 @@ valueFormat.leading(1, 3, 0);
 2. browser
 ```js
 <script>
-import Formatting from 'formatting';
-
 const valueFormat = new Formatting('value');
 valueFormat.leading(1, 3, 0);
 </script>
