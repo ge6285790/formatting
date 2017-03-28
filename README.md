@@ -40,24 +40,24 @@ Create a Constructor like `const format = new Formatting(type)`,and type is the 
 
 const format = new Formatting()
 
-Object APIs                    | explan       | return type
------------------------------- | -------------|-------------------
-format.deepMerge(obj1, obj2) | Combine two nested object | object
-format.deepEuqal(obj1, obj2) | Compared two nested object(use deep-equal module) | boolean
+Object APIs                                | explan                                                              | return type
+------------------------------------------ | ------------------------------------------------------------------- | -------------------
+format.deepMerge(obj1, obj2)               | Combine two nested object                                           | object
+format.deepEuqal(obj1, obj2)               | Compared two nested object(use deep-equal module)                   | boolean
 
-Array APIs                     | explan      | return type
------------------------------- | ------------|-------------------
-format.arrayMerge(array1, array2) | Merge two nested array with non duplicate value. (array2 to array1) | array
-format.arrayDuplicateValue(array1, array2) | Compare two nested array, and get duplicate value | array
-format.arrayRemoveValue(array1, array2) | Remove children value that array2 has from array1 | array
-format.arrayNonrepeatValue(array1, array2) | Compare two nested array, and get non duplicate value | array
+Array APIs                                 | explan                                                              | return type
+------------------------------------------ | ------------------------------------------------------------------- | ------------------
+format.arrayMerge(array1, array2)          | Merge two nested array with non duplicate value. (array2 to array1) | array
+format.arrayDuplicateValue(array1, array2) | Compare two nested array, and get duplicate value                   | array
+format.arrayRemoveValue(array1, array2)    | Remove children value that array2 has from array1                   | array
+format.arrayNonrepeatValue(array1, array2) | Compare two nested array, and get non duplicate value               | array
 
-Value APIs                     | explan      | return type
------------------------------- | ------------|-------------------
-format.leading(value, length, letter) | value: the data you want to format. length the result string length. letter: fill leading character | string
-format.tailing(value, length, letter) | value: the data you want to format. length the result string length. letter: fill tailing character | string
-format.sequence(value, letter, number) |  value: the data you want to format. letter: the character want to insert. number: loop number. | string
-format.insert(value, letter, start) | value: the data you want to format. letter: the character want to insert. start: insert index. | string
+Value APIs                                 | explan                                                              | return type
+------------------------------------------ | --------------------------------------------------------------------|-------------------
+format.leading(value, length, letter)      | value: the data you want to format. length the result string length. letter: fill leading character | string
+format.tailing(value, length, letter)      | value: the data you want to format. length the result string length. letter: fill tailing character | string
+format.sequence(value, letter, number)     |  value: the data you want to format. letter: the character want to insert. number: loop number. | string
+format.insert(value, letter, start)        | value: the data you want to format. letter: the character want to insert. start: insert index. | string
 format.replace(value, letter, replaceLetter) | value: the data you want to format. letter: the character want to be replaced. replaceLetter: the replace character. | string
 format.replaceWithRange(value, replaceLetter, start, end) | value: the data you want to format. replaceLetter: the replace character. start: replace start index. end: replace end index. | string
 
