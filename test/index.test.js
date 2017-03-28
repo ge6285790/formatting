@@ -98,9 +98,9 @@ describe('Constructor Formatting', () => {
 
       it('getParamByName function test => get param by name', () => {
         // url is not essential
-        expect(urlFormat.getParamByName('https://google.com?a=kyle&b=&scott', 'a')).to.eql('kyle');
-        expect(urlFormat.getParamByName('https://google.com?a=kyle&b=&scott', 'b')).to.eql('');
-        expect(urlFormat.getParamByName('https://google.com?a=kyle&b=&scott', 'scott')).to.eql('');
+        expect(urlFormat.getParamByName('a', 'https://google.com?a=kyle&b=&scott')).to.eql('kyle');
+        expect(urlFormat.getParamByName('b', 'https://google.com?a=kyle&b=&scott')).to.eql('');
+        expect(urlFormat.getParamByName('scott', 'https://google.com?a=kyle&b=&scott')).to.eql('');
       });
 
       it('getParams function test => get params from url', () => {

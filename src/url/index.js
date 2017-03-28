@@ -13,7 +13,7 @@ export default function url(that) {
     }
   }
 
-  that.getParamByName = (url, name) => {
+  that.getParamByName = (name, url) => {
     let locationUrl = url ? url : location.href;
     const string = name.replace(/[\[\]]/g, '\\$&');
     const regex = new RegExp('[?&]' + string + '(=([^&#]*)|&|#|$)');
