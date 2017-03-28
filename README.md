@@ -44,7 +44,6 @@ Object APIs                    | explan
 ------------------------------ | -------------
 format.deepMerge(obj1, obj2) | Combine two nested object
 format.deepEuqal(obj1, obj2) | Compared two nested object(use deep-equal module)
-
 Array APIs                     | explan  
 ------------------------------ | -------------
 format.arrayMerge(array1, array2) | Merge two nested array with non duplicate value.
