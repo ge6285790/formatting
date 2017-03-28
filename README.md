@@ -5,13 +5,11 @@ Process data like value, file, url, array and object.
 ## Installation
 <br/>
 1. node
-```
-npm install formatting --save
+```npm install formatting --save
 ```
 <br/>
 2. browser
-```
-<script src=""></script>
+```<script src=""></script>
 ```
 
 ## Usage
