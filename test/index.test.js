@@ -68,11 +68,11 @@ describe('Constructor Formatting', () => {
       const fileFormat = new Formatting('file');
 
       it('size function test => count file size', () => {
-        expect(fileFormat.size(100)).to.eql('100 KB');
-        expect(fileFormat.size(1001)).to.eql('1 MB');
-        expect(fileFormat.size(100010)).to.eql('100.01 MB');
-        expect(fileFormat.size(100050)).to.eql('100.05 MB');
-        expect(fileFormat.size(1001000)).to.eql('1 GB');
+        expect(fileFormat.size(100)).to.eql('100 Bytes');
+        expect(fileFormat.size(1001)).to.eql('1 KB');
+        expect(fileFormat.size(100010)).to.eql('100.01 KB');
+        expect(fileFormat.size(100050)).to.eql('100.05 KB');
+        expect(fileFormat.size(1001000)).to.eql('1 MB');
       });
 
       it('duration function test => count duration time', () => {
@@ -111,26 +111,60 @@ describe('Constructor Formatting', () => {
           scott: '',
         });
       });
+    });
 
-      it('getParams function test => get params from url', () => {
-        // url is not essential
-        expect(urlFormat.getParams('https://google.com?a=kyle&b=&scott')).to.eql({
-          a: 'kyle',
-          b: '',
-          scott: '',
-        });
+    describe('#Array Format', () => {
+      const arrayFormat = new Formatting('array');
+
+      it('arrayMerge function test => merge two array', () => {
+        expect(arrayFormat.arrayMerge(['1', '2', '3'], ['3', '4'])).to.eql(['1', '2', '3', '4']);
+        expect(arrayFormat.arrayMerge(['1', 'aaaa', '3'], ['aaaa', '4'])).to.eql(['1', 'aaaa', '3', '4']);
+        expect(arrayFormat.arrayMerge([{a: 1}, '3'], ['aaaa', '4'])).to.eql([{a: 1}, '3', 'aaaa', '4']);
+        expect(arrayFormat.arrayMerge([['a','1'], '3'], ['aaaa', '4'])).to.eql([['a','1'], '3', 'aaaa', '4']); // 物件、矩陣也會下去比對
+        expect(arrayFormat.arrayMerge([['a','1',[1, 2]], [1],'3'], [[2], 'aaaa', '4'])).to.eql([['a','1',[1, 2]], [1], '3', [2], 'aaaa', '4']); // 物件、矩陣也會下去比對
       });
+
+      it('arraySameValue function test => get same value in two array', () => {
+        expect(arrayFormat.arraySameValue(['1', '2', '3'], ['3', '4'])).to.eql(['3']);
+        expect(arrayFormat.arraySameValue(['1', 'aaaa', '3'], ['aaaa', '4'])).to.eql(['aaaa']);
+        expect(arrayFormat.arraySameValue([{a: 1}, '3'], [{a: 1}, 'aaaa', '4'])).to.eql([{a: 1}]);
+        expect(arrayFormat.arraySameValue([['a','1'], '3'], [['a','1'], 'aaaa', '4'])).to.eql([['a','1']]); // 物件、矩陣也會下去比對
+        expect(arrayFormat.arraySameValue([['a','1', [1, 2]], [1], [2], '3'], [['a','1', [1, 2]], [1],'aaaa', '4'])).to.eql([['a','1', [1, 2]], [1]]); // 物件、矩陣也會下去比對
+      });
+
+      it('arrayRemoveValue function test => remove value from array1 if it is same as value in array2', () => {
+        expect(arrayFormat.arrayRemoveValue(['1', '2', '3'], ['3', '4'])).to.eql(['1', '2']);
+        expect(arrayFormat.arrayRemoveValue(['1', 'aaaa', '3'], ['aaaa', '4'])).to.eql(['1', '3']);
+        expect(arrayFormat.arrayRemoveValue([{a: 1}, '3'], [{a: 1}, 'aaaa', '4'])).to.eql(['3']);
+        expect(arrayFormat.arrayRemoveValue([['a','1'], '3'], [['a','1'], 'aaaa', '4'])).to.eql(['3']); // 物件、矩陣也會下去比對
+        expect(arrayFormat.arrayRemoveValue([['a','1', [1, 2]], [1], [2], '3'], [['a','1', [1, 2]], [1],'aaaa', '4'])).to.eql([[2], '3']); // 物件、矩陣也會下去比對
+      });
+
+      it('arrayNonrepeatValue function test => get non-reapeat value from two array', () => {
+        expect(arrayFormat.arrayNonrepeatValue(['1', '2', '3'], ['3', '4'])).to.eql(['1', '2', '4']);
+        expect(arrayFormat.arrayNonrepeatValue(['1', 'aaaa', '3'], ['aaaa', '4'])).to.eql(['1', '3', '4']);
+        expect(arrayFormat.arrayNonrepeatValue([{a: 1}, '3'], [{a: 1}, 'aaaa', '4'])).to.eql(['3', 'aaaa', '4']);
+        expect(arrayFormat.arrayNonrepeatValue([['a','1'], '3'], [['a','1'], 'aaaa', '4'])).to.eql(['3', 'aaaa', '4']); // 物件、矩陣也會下去比對
+        expect(arrayFormat.arrayNonrepeatValue([['a','1', [1, 2]], [1], [2], '3'], [['a','1', [1, 2]], [1],'aaaa', '4'])).to.eql([[2], '3', 'aaaa', '4']); // 物件、矩陣也會下去比對
+      });
+
     });
 
     describe('#Object Format', () => {
       const objectFormat = new Formatting('url');
 
       it('deepMerge function test => deep merge two object', () => {
-        // url is not essential
-        expect(objectFormat.deepMerge({a: 1, c: 3}, {b: 2, c: 2})).to.eql({
-          a: 1,
-          b: 2
-        });
+        expect(objectFormat.deepMerge({a: 1, c: 3}, {b: 2, c: 2})).to.eql({a: 1,b: 2,c: 2});
+        expect(objectFormat.deepMerge({a: 1, c: { d: 4 }}, {b: 2, c: { e: 5 }})).to.eql({a: 1,b: 2,c: {d: 4,e: 5}});
+        const obj1 = {a: 1,c: {d: 4,f: {name: 'kyle',age: 26},g: {age: 29}}};
+        const obj2 = {b: 2,c: {e: 5,f: {name: 'kyle',age: 27},g: {name: 'scott'}}};
+        const result = {a: 1,b: 2,c: {d: 4,e: 5,f: {name: 'kyle',age: 27},g: {name: 'scott',age: 29}}};
+        expect(objectFormat.deepMerge(obj1, obj2)).to.eql(result);
+      });
+
+      it('deepEuqal function test => compare two object', () => {
+        expect(objectFormat.deepEuqal({a: 2, c: 3}, {a: 2, c: 3})).to.eql(true);
+        expect(objectFormat.deepEuqal({a: 1, c: { d: 4 }}, {b: 2, c: { e: 5 }})).to.eql(false);
       });
     });
 

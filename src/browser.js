@@ -1,7 +1,8 @@
-import value from './value/value';
-import file from './file/file';
-import url from './url/url';
-import object from './object/object';
+import value from './value';
+import file from './file';
+import url from './url';
+import object from './object';
+import array from './array';
 
 function Formatting(type) {
 
@@ -14,7 +15,11 @@ function Formatting(type) {
       url(this);
     }
     case 'object': {
+      array(this);
       object(this);
+    }
+    case 'array': {
+      array(this);
     }
     case 'value': {
       value(this);
@@ -29,6 +34,9 @@ function Formatting(type) {
     default: {
       value(this);
       file(this);
+      url(this);
+      array(this);
+      object(this);
     }
   }
 }
