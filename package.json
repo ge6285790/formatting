@@ -1,10 +1,12 @@
 {
   "name": "formatting",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "format value letter",
-  "main": "index.js",
+  "main": "./bin/index.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register"
+    "test": "mocha --compilers js:babel-core/register",
+    "build": "babel ./src --presets babel-preset-es2015 --out-dir ./bin",
+    "build:min": "NODE_ENV=production webpack  --config webpack.config.js"
   },
   "keywords": [
     "format",
@@ -16,8 +18,15 @@
   "devDependencies": {
     "babel-cli": "^6.24.0",
     "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.1",
+    "babel-polyfill": "^6.23.0",
     "babel-preset-es2015": "^6.24.0",
+    "babel-preset-stage-0": "^6.22.0",
     "chai": "^3.5.0",
-    "mocha": "^3.2.0"
+    "mocha": "^3.2.0",
+    "webpack": "^2.3.1"
+  },
+  "dependencies": {
+    "deep-equal": "^1.0.1"
   }
 }

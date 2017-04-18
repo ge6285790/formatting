@@ -6,7 +6,7 @@ import array from './array';
 
 function Formatting(type) {
 
-  // type = file, value, text, number, url
+  // type = file, value, text, number
   switch (type) {
     case 'file': {
       file(this);
@@ -24,6 +24,13 @@ function Formatting(type) {
     case 'value': {
       value(this);
     }
+    case 'text': {
+
+    }
+    case 'number': {
+
+
+    }
     default: {
       value(this);
       file(this);
@@ -34,6 +41,4 @@ function Formatting(type) {
   }
 }
 
-// window.Formatting = Formatting;
-
-export default Formatting;
+window.Formatting = Formatting;
