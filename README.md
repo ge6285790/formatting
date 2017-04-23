@@ -5,13 +5,23 @@ Process data like value, file, url, array and object.
 ## Installation
 
 1. node
+package.json
 ```
-npm install formatting --save
+"dependencies": {
+  ...
+  "formatting": "git+https://github.com/ge6285790/formatting.git"
+}
+```
+
+terminal
+```
+npm install formatting
 ```
 
 2. browser
 ```
-<script src=""></script>
+find node_modules/formatting/bin/browser.js
+and use <script src=""></script> to require it
 ```
 
 ## Usage
