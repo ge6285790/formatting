@@ -46,7 +46,7 @@ format.deepEuqal(obj1, obj2)               | Compared two nested object(use deep
 Array APIs                                 | explan                                                              | return type
 ------------------------------------------ | ------------------------------------------------------------------- | ------------------
 format.arrayMerge(array1, array2)          | Merge two nested array with non duplicate value. (array2 to array1) | array
-format.arrayDuplicateValue(array1, array2) | Compare two nested array, and get duplicate value                   | array
+format.arraySameValue(array1, array2) | Compare two nested array, and get duplicate value                   | array
 format.arrayRemoveValue(array1, array2)    | Remove children value that array2 has from array1                   | array
 format.arrayNonrepeatValue(array1, array2) | Compare two nested array, and get non duplicate value               | array
 
@@ -63,12 +63,12 @@ File APIs                     | explan        | return type
 ------------------------------ | -------------|------------
 format.file(selector) | Get input file info, selector is className / id / etc selector | array
 format.size(value) | Compute file size, minimal unit is Bytes | string
-format.duration(millisecond) | Convert Time to HH:MM:SS | string
+format.duration(Second) | Convert Time to HH:MM:SS | string
 format.videoInfo(selector) | Get input file info with formatted size, type and duration. Selector is className / id / etc selector | object
 format.imageInfo(selector) | Get input file info with formatted size and type. Selector is className / id / etc selector | object
 
 Url APIs                     | explan        | return type
 ------------------------------ | -------------|------------
 format.getHash(url) | Get url hash value, if url variable is empty, it will get location.href. | object
-format.getParamByName(name, url) | Get url param value with indicate name. If url variable is empty, it will get location.href. | string
+format.getParamByName(url, name) | Get url param value with indicate name. If url variable is empty, it will get location.href. | string
 format.getParams(url) | Get all url params value. If url variable is empty, it will get location.href. | object
