@@ -1,6 +1,6 @@
 {
   "name": "formatting",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "format value letter",
   "main": "./bin/index.js",
   "scripts": {
