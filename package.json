@@ -1,6 +1,6 @@
 {
   "name": "formatting",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "format value letter",
   "main": "./bin/index.js",
   "scripts": {
@@ -11,8 +11,24 @@
   "keywords": [
     "format",
     "value",
-    "javascript"
+    "javascript",
+    "es6",
+    "object",
+    "array",
+    "file",
+    "url",
+    "value",
+    "deep merge",
+    "leading"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ge6285790/formatting.git"
+  },
+  "bugs": {
+      "url": "https://github.com/ge6285790/formatting/issues"
+  },
+  "homepage": "https://github.com/ge6285790/formatting#readme",
   "author": "ge6285790",
   "license": "MIT",
   "devDependencies": {

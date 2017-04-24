@@ -5,17 +5,8 @@ Process data like value, file, url, array and object.
 ## Installation
 
 1. node
-package.json
 ```
-"dependencies": {
-  ...
-  "formatting": "git+https://github.com/ge6285790/formatting.git"
-}
-```
-
-terminal
-```
-npm install formatting
+npm install formatting --save
 ```
 
 2. browser
