@@ -66,8 +66,8 @@ File APIs                     | explan        | return type
 format.file(selector) | Get input file info, selector is className / id / etc selector | array
 format.size(value) | Compute file size, minimal unit is Bytes | string
 format.duration(Second) | Convert Time to HH:MM:SS | string
-format.videoInfo(selector) | Get input file info with formatted size, type and duration. Selector is className / id / etc selector | promise
-format.imageInfo(selector) | Get input file info with formatted size and type. Selector is className / id / etc selector | promise
+format.videoInfo(selector) | Get input file info with formatted size, type and duration. Selector is className / id / etc selector. The return value is promise, so if want to see the result, it would look like format.videoInfo(selector).then(data) => { console.log(data) }  | promise
+format.imageInfo(selector) | Get input file info with formatted size and type. Selector is className / id / etc selector. The return value is promise, so if want to see the result, it would look like format.imageInfo(selector).then(data) => { console.log(data) }  | promise
 
 Url APIs                     | explan        | return type
 ------------------------------ | -------------|------------
