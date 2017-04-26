@@ -1,6 +1,7 @@
 # Formatting
 
 Process data like value, file, url, array and object.
+Demo page: https://goo.gl/djJJ17
 
 ## Installation
 
@@ -65,8 +66,8 @@ File APIs                     | explan        | return type
 format.file(selector) | Get input file info, selector is className / id / etc selector | array
 format.size(value) | Compute file size, minimal unit is Bytes | string
 format.duration(Second) | Convert Time to HH:MM:SS | string
-format.videoInfo(selector) | Get input file info with formatted size, type and duration. Selector is className / id / etc selector | object
-format.imageInfo(selector) | Get input file info with formatted size and type. Selector is className / id / etc selector | object
+format.videoInfo(selector) | Get input file info with formatted size, type and duration. Selector is className / id / etc selector | promise
+format.imageInfo(selector) | Get input file info with formatted size and type. Selector is className / id / etc selector | promise
 
 Url APIs                     | explan        | return type
 ------------------------------ | -------------|------------
